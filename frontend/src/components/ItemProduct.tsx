@@ -1,0 +1,18 @@
+import { IoBagAddOutline } from "react-icons/io5"
+import { Product } from '../services/productService'
+import { Link } from 'react-router-dom'
+
+const ItemProduct = ({ product }: { product: Product }) => {
+  return (
+    <div className="w-[250px] md:w-[200px] tb:w-[210px] tb1:w-[235px] lg:w-[190px] xl:w-[220px]">
+        <Link to={`/product?id=${product.id}`}><div className="cursor-pointer bg-gray-100"><img src={product.thumbnail}></img></div></Link>
+        <Link to={`/product?id=${product.id}`}><p className="font-semibold mt-5 cursor-pointer">{product.title}</p></Link>
+        <div className="flex justify-between items-center mt-7">
+            <p className="text-red-500 font-bold text-[20px]">{product.price}</p>
+            <IoBagAddOutline size='30' className="cursor-pointer" />
+        </div>
+        </div>
+  )
+}
+
+export default ItemProduct
