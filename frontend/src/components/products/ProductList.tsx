@@ -1,7 +1,9 @@
-import ItemProduct from "../components/ItemProduct"
+import ItemProduct from "./ItemProduct"
 import React from 'react';
-import { useProducts } from '../hooks/useProducts';
-import Loader from "./Loader";
+import { useProducts } from '../../hooks/useProducts';
+import LoaderItemProduct from "../ui/loaders/LoaderItemProduct";
+import Error from '../common/Error';
+import NoData from '../common/NoData';
   
   const ProductList: React.FC = () => {
 
@@ -12,25 +14,25 @@ import Loader from "./Loader";
   if (isLoading) {
     return <ul className="flex flex-col md:flex-row flex-wrap gap-16 md:gap-10 w-full items-center">
               {products_loading.map((_, index) => (
-                <li key={index}><Loader></Loader></li>
+                <li key={index}><LoaderItemProduct /></li>
               ))}
           </ul>
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <Error message={error?.message} />
   }
   
-  if (!Array.isArray(data)) {
-    return <div>No data available</div>;
+  if (!Array.isArray(data) || data.length === 0) {
+    return <NoData />
   }
 
   return (
     <div>
       <ul className="flex flex-col md:flex-row flex-wrap gap-16 md:gap-10 w-full items-stretch">
-      {data && data.map((product) => (
-          <li key={product.id}>
-            <ItemProduct product={product}></ItemProduct>
+      {data && data?.map((product) => (
+          <li key={product?.id}>
+            <ItemProduct product={product} />
           </li>
         ))}
       </ul>

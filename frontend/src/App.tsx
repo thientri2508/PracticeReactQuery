@@ -1,19 +1,19 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Layout from './components/Layout'
-import HomePage from './pages/Home'
-import ProductDetail from './pages/ProductDetail'
+import Layout from './components/common/Layout'
+import { routes } from './routes'; // Import routes
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path='/products' element={<HomePage />}></Route>
-          <Route path="/product" element={<ProductDetail />} />
-        </Route>
-      </Routes>
+        <Layout>
+            <Routes>
+                {routes.map(({ path, element: Element, index }) => (
+                    <Route key={path} path={path} element={<Element />} index={index} />
+                ))}
+            </Routes>
+        </Layout>
     </BrowserRouter>
   )
 }

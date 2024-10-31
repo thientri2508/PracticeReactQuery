@@ -1,9 +1,11 @@
 import { FaPlus } from "react-icons/fa6";
 import { GrFormSubtract } from "react-icons/gr";
-import LoaderDetailProduct from "../components/LoaderDetailProduct";
+import LoaderDetailProduct from "../components/ui/loaders/LoaderDetailProduct";
 import { useProductDetails } from "../hooks/useDetailProduct";
+import Error from '../components/common/Error';
+import React from 'react';
 
-const ProductDetail = () => {
+const ProductDetail: React.FC = () => {
 
     const searchParams = new URLSearchParams(location.search);
     const productId = searchParams.get('id'); 
@@ -13,20 +15,14 @@ const ProductDetail = () => {
         return (
             <main className="w-full mt-[100px] md:mt-[180px] lg:mt-[140px]">
                 <div className="w-[90%] lg:max-w-screen-lg m-auto">
-                    <LoaderDetailProduct></LoaderDetailProduct>
+                    <LoaderDetailProduct />
                 </div>
             </main>
         )
     }
 
     if (error) {
-        return (
-            <main className="w-full mt-[100px] md:mt-[180px] lg:mt-[140px]">
-                <div className="w-[90%] lg:max-w-screen-lg m-auto">
-                    <p className="font-bold text-[30px] w-full text-center pt-10">Không tìm thấy sản phẩm</p>
-                </div>
-            </main>
-        ) 
+        return <Error message={error?.message} />
     }
 
   return (
@@ -34,21 +30,21 @@ const ProductDetail = () => {
         <div className="w-[90%] lg:max-w-screen-lg m-auto">
             <div className="grid grid-cols-1 md:grid-cols-8 mt-10 gap-10">
                 <div className="col-span-5 md:col-span-3">
-                    <div><img src={product.thumbnail} className="lg:h-[400px]"></img></div>
+                    <div><img src={product?.thumbnail} className="lg:h-[400px]"></img></div>
                     <ul className="flex gap-2 mt-10">
-                        <li className="border2"><img src={product.thumbnail} className="lg:h-[80px]"></img></li>
-                        <li className="border2"><img src={product.thumbnail} className="lg:h-[80px]"></img></li>
-                        <li className="border2"><img src={product.thumbnail} className="lg:h-[80px]"></img></li>
-                        <li className="border2"><img src={product.thumbnail} className="lg:h-[80px]"></img></li>
+                        <li className="border2"><img src={product?.thumbnail} className="lg:h-[80px]"></img></li>
+                        <li className="border2"><img src={product?.thumbnail} className="lg:h-[80px]"></img></li>
+                        <li className="border2"><img src={product?.thumbnail} className="lg:h-[80px]"></img></li>
+                        <li className="border2"><img src={product?.thumbnail} className="lg:h-[80px]"></img></li>
                     </ul>
                 </div>
                 <div className="col-span-5 flex flex-col gap-5">
-                    <h1 className="font-bold text-[20px]">{product.title}</h1>
+                    <h1 className="font-bold text-[20px]">{product?.title}</h1>
                     <div className="flex gap-16">
-                        <h3>Thương hiệu: <b>{product.brand}</b></h3>
-                        <h3>Mã sản phẩm: <b>DTAAL-{product.id}</b></h3>
+                        <h3>Thương hiệu: <b>{product?.brand}</b></h3>
+                        <h3>Mã sản phẩm: <b>DTAAL-{product?.id}</b></h3>
                     </div>
-                    <h1 className="text-[30px] font-bold text-red-500">{product.price}đ</h1>
+                    <h1 className="text-[30px] font-bold text-red-500">{product?.price}đ</h1>
                     <div className="flex">
                         <div className="border1"><GrFormSubtract /></div>
                         <div className="text-[30px] font-bold border-solid border-[1px] border-black w-[100px] text-center">1</div>

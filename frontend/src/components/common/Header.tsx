@@ -1,10 +1,11 @@
-import logo from '../assets/logo.png'
+import logo from '../../assets/logo/logo.png'
 import { FaPhoneVolume } from "react-icons/fa6"
 import { FaRegCircleUser } from "react-icons/fa6"
 import { FaRegHeart } from "react-icons/fa"
 import { MdOutlineShoppingBag } from "react-icons/md"
 import { MdOutlineLocationOn } from "react-icons/md"
 import { BsList } from "react-icons/bs"
+import { ROUTES } from '../../constants/constants.router'
 
 interface HeaderProps {
   openNavbar: boolean
@@ -15,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ openNavbar, setOpenNavbar }) => {
   return (
     <header className="w-full fixed top-0 z-10 bg-white">
       <div className="max-w-screen-xl h-[80px] m-auto flex justify-between items-center">
-        <a href='/'><div className="cursor-pointer w-[80px] md:w-[200px]"><img src={logo}></img></div></a>
+        <a href={ROUTES.HOME}><div className="cursor-pointer w-[80px] md:w-[200px]"><img src={logo}></img></div></a>
 
         <ul className="flex gap-7">
           <li><input type="search" placeholder="Tìm kiếm sản phẩm"

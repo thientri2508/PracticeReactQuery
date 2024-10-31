@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction  } from '@reduxjs/toolkit';
-import { Product, productsData } from '../../../src/productsData';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Product } from '../../../mockData/productsData';
+import { fetchProducts, fetchProductById } from './productActions'; // Import các async thunk
 
 interface ProductState {
   products: Product[];
@@ -16,38 +17,7 @@ const initialState: ProductState = {
   error: null,
 };
 
-// Hàm mock API để lấy dữ liệu sản phẩm
-const mockFetchProducts = async (): Promise<Product[]> => {
-    // Giả lập độ trễ 0.5 giây trước khi trả dữ liệu
-    return new Promise<Product[]>((resolve) => {
-        setTimeout(() => {
-        resolve(productsData);
-        }, 500);
-    });
-};
-
-// Hàm mock API để lấy chi tiết sản phẩm theo ID
-const mockFetchProductById = async (id: number): Promise<Product | null> => {
-  return new Promise<Product | null>((resolve) => {
-    setTimeout(() => {
-      const product = productsData.find((prod) => prod.id === id) || null;
-      resolve(product);
-    }, 500);
-  });
-};
-
-// Tạo async thunk để fetch dữ liệu sản phẩm
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const response = await mockFetchProducts();
-  return response;
-});
-
-// Tạo async thunk để fetch sản phẩm theo ID
-export const fetchProductById = createAsyncThunk('products/fetchProductById', async (id: number) => {
-  const response = await mockFetchProductById(id);
-  return response;
-});
-
+// Tạo slice
 const productSlice = createSlice({
   name: 'products',
   initialState,
@@ -78,7 +48,7 @@ const productSlice = createSlice({
           state.status = 'failed';
           state.error = 'Product not found';
         }
-      })
+      });
   },
 });
 

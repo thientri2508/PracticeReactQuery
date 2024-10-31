@@ -1,55 +1,40 @@
-import axios from 'axios';
-const API_URL = 'https://dummyjson.com/products';
+import apiClient from '../connectAPI/apiClient';
+import { API_ENDPOINTS } from '../connectAPI/apiEndpoints';
+import { handleApiError } from '../connectAPI/apiErrorHandler';
 
-//Định nghĩa kiểu Product
-export interface Product {
-    id: number;
-    title: string;
-    description: string;
-    category: number;
-    price: number;
-    brand: string;
-    thumbnail: string;
-    images: [string];
-}
-export interface ProductQueryParams {
-  category?: string;
-}  
+import { ProductQueryParams } from '../types/product.types';
 
-export const fetchProducts = async (query?: ProductQueryParams)=> {
-    try {
-      let api = API_URL
-      if(query && Object.keys(query).length !== 0) {
-        api = `${API_URL}/category/${query.category}`
-        //const params = queryString.stringify(query);
-        //const response = await axios.get(`.../api/products?${params}`);
-      } 
-      const response = await axios.get(api);
+export const fetchProducts = async (query?: ProductQueryParams) => {
+  try {
+      let api = API_ENDPOINTS.PRODUCTS;
+      
+      // Nếu có category trong query, thay đổi URL endpoint
+      if (query && Object.keys(query).length !== 0) {
+          api = API_ENDPOINTS.PRODUCTS + `/category/${query.category}`;
+      }
+      
+      const response = await apiClient.get(api);
+      
       // Kiểm tra dữ liệu trước khi trả về
-      if (!Array.isArray(response.data.products) || response.data.products.length===0) {
-        throw new Error('Product not found');
+      if (!Array.isArray(response.data.products) || response.data.products.length === 0) {
+          throw new Error('Product not found');
       }
+
       return response.data.products;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        throw new Error(error.response?.data?.message || 'Failed to fetch products');
-      } else {
-        throw new Error('Failed to fetch products');
-      }
-    }
-  };
+  } catch (error) {
+      handleApiError(error); // Sử dụng hàm xử lý lỗi từ connectAPI
+  }
+};
 
 export const fetchProductDetails = async (id: string) => {
   try {
-    if(id) {
-      const response = await axios.get(`${API_URL}/${id}`);
-      return response.data;
-    }
+      if (id) {
+          const response = await apiClient.get(API_ENDPOINTS.PRODUCT_DETAIL(id));
+          return response.data;
+      } else {
+          throw new Error("Product ID is required");
+      }
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      throw new Error(error.response?.data?.message || 'Failed to fetch products');
-    } else {
-      throw new Error('Failed to fetch products');
-    }
+      handleApiError(error); // Sử dụng hàm xử lý lỗi từ connectAPI
   }
 };

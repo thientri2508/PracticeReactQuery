@@ -1,11 +1,11 @@
-import sp1 from './assets/sp1.jpg'
-import sp2 from './assets/sp2.jpg'
-import sp3 from './assets/sp3.jpg'
-import sp4 from './assets/sp4.jpg'
-import sp5 from './assets/sp5.jpg'
-import sp6 from './assets/sp6.jpg'
-import sp7 from './assets/sp7.jpg'
-import sp8 from './assets/sp8.jpg'
+import sp1 from '../assets/products/sp1.jpg'
+import sp2 from '../assets/products/sp2.jpg'
+import sp3 from '../assets/products/sp3.jpg'
+import sp4 from '../assets/products/sp4.jpg'
+import sp5 from '../assets/products/sp5.jpg'
+import sp6 from '../assets/products/sp6.jpg'
+import sp7 from '../assets/products/sp7.jpg'
+import sp8 from '../assets/products/sp8.jpg'
 
 export interface Variant {
     memory: string;

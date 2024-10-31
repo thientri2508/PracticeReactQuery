@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import { MdKeyboardArrowUp } from "react-icons/md"
-import Dropdown from "./Dropdown"
+import Dropdown from "../ui/Dropdown"
 
 const Footer = () => {
 
@@ -10,10 +10,10 @@ const Footer = () => {
   return (
     <footer className="w-full mt-20 bg-black text-white py-14">
       <div className="w-[80%] md:w-[90%] lg:max-w-screen-xl m-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-0">
-          <Dropdown></Dropdown>
-          <Dropdown></Dropdown>
-          <Dropdown></Dropdown>
-          <Dropdown></Dropdown>
+          <Dropdown />
+          <Dropdown />
+          <Dropdown />
+          <Dropdown />
       </div>
 
       <div className="w-[80%] md:w-[90%] lg:max-w-screen-xl m-auto grid grid-cols-1 md:grid-cols-2 mt-10 md:mt-32 gap-10 md:gap-5">
@@ -33,7 +33,7 @@ const Footer = () => {
         <div className="col-span-1">
           <h3 className="font-bold mb-10 text-[18px]">NHẬN TIN KHUYẾN MÃI</h3>
           <div className="flex">
-            <input type="text" className="outline-none border-solid border-2 w-[220px] lg:w-[400px] text-black px-4 py-1" placeholder="Nhập email của bạn"></input>
+            <input type="text" className="outline-none border-solid border-2 w-[220px] lg:w-[400px] text-black px-4 py-1" placeholder="Nhập email của bạn" />
             <button className="bg-red-500 px-3 py-2 font-bold">Đăng ký</button>
           </div>
         </div>
