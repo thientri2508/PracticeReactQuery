@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './core/style//index.css'
 import App from './App.tsx'
 import { Provider } from 'react-redux';
-import store from './store';
+import store from './core/store/index.ts';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();

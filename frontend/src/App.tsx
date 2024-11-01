@@ -1,7 +1,7 @@
-import './App.css'
+import './core/style/App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Layout from './components/common/Layout'
-import { routes } from './routes'; // Import routes
+import Layout from './core/components/Layout'
+import { routes } from './core/routes';
 
 function App() {
 
