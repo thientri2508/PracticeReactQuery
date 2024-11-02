@@ -7,21 +7,13 @@ import NoData from '../../../core/components/NoData';
   
   const ProductList: React.FC = () => {
 
-    const { data, error, isLoading } = useProducts(); 
-
-  if (isLoading) {
-    return <LoaderItemProduct />
-  }
-
-  if (error) {
-    return <Error message={error?.message} />
-  }
-  
-  if (!Array.isArray(data) || data.length === 0) {
-    return <NoData />
-  }
+  const { data, error, isLoading } = useProducts(); 
 
   return (
+    <>
+    <LoaderItemProduct isLoading={isLoading} />
+    <Error message={error?.message} />
+    <NoData data={data ? [data] : []} />
     <div>
       <ul className="flex flex-col md:flex-row flex-wrap gap-16 md:gap-10 w-full items-stretch">
       {data && data?.map((product) => (
@@ -31,6 +23,7 @@ import NoData from '../../../core/components/NoData';
         ))}
       </ul>
     </div>
+    </>
   )
 }
 

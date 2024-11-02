@@ -2,7 +2,7 @@ import { Product } from '../../../core/types/Product';
 import { FaPlus } from "react-icons/fa6";
 import { GrFormSubtract } from "react-icons/gr";
 
-const ProductDetails = ({ product }: { product: Product }) => {
+const ProductDetails = ({ product }: { product?: Product }) => {
   return (
     <>
         <h1 className="font-bold text-[20px]">{product?.title}</h1>
