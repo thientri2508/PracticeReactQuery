@@ -1,6 +1,6 @@
 import './core/style/App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Layout from './core/components/Layout'
+import Layout from './core/components/common/Layout'
 import { routes } from './core/routes';
 
 function App() {

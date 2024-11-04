@@ -1,11 +1,11 @@
-import logo from '../assets/logo/logo.png'
+import logo from '../../assets/logo/logo.png'
 import { FaPhoneVolume } from "react-icons/fa6"
 import { FaRegCircleUser } from "react-icons/fa6"
 import { FaRegHeart } from "react-icons/fa"
 import { MdOutlineShoppingBag } from "react-icons/md"
 import { MdOutlineLocationOn } from "react-icons/md"
 import { BsList } from "react-icons/bs"
-import { ROUTES } from '../constants/constants.router'
+import { ROUTES } from '../../constants/constants.router'
 
 interface HeaderProps {
   openNavbar: boolean

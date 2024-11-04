@@ -1,6 +1,6 @@
 import LoaderDetailProduct from "./widgets/LoaderDetailProduct";
 import { useProductDetails } from "../../core/hooks/useDetailProduct";
-import Error from '../../core/components/Error';
+import Error from '../../core/components/dataDisplay/Error';
 import React from 'react';
 import ProductImage from "./widgets/ProductImage";
 import ProductInfor from "./widgets/ProductInfor";

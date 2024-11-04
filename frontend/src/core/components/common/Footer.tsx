@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import { MdKeyboardArrowUp } from "react-icons/md"
-import Dropdown from "./Dropdown"
+import Dropdown from "../ui/Dropdown"
 
 const Footer = () => {
 

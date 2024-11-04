@@ -1,6 +1,6 @@
-import { CategoriesData } from "../mockData/categoryData";
+import { CategoriesData } from "../../mockData/categoryData";
 import { Link, useLocation } from 'react-router-dom';
-import { ROUTES } from "../constants/constants.router";
+import { ROUTES } from "../../constants/constants.router";
 
 interface NavbarProps {
     openNavbar: boolean;

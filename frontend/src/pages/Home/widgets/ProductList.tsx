@@ -2,8 +2,8 @@ import ItemProduct from "./ItemProduct"
 import React from 'react';
 import { useProducts } from '../../../core/hooks/useProducts';
 import LoaderItemProduct from "./LoaderItemProduct";
-import Error from '../../../core/components/Error';
-import NoData from '../../../core/components/NoData';
+import Error from '../../../core/components/dataDisplay/Error';
+import NoData from '../../../core/components/dataDisplay/NoData';
   
   const ProductList: React.FC = () => {
 
